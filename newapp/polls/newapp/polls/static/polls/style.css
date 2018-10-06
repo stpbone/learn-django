@@ -1,0 +1,16 @@
+li a {
+    color: rgb(65, 50, 203);
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-decoration: none;
+}
+
+h1 {
+    color:  rgb(65, 50, 203);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+    background: white url("images/background.gif") no-repeat;
+}
+
