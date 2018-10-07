@@ -1,21 +1,28 @@
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    </head>
+    <body>
+        <h1>Open Poll</h1>
+        <hr>
+        <h2>{{ question.question_text }}</h2>
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
-
-<h1>Open Poll</h1>
-<hr>
-<h2>{{ question.question_text }}</h2>
-
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-<p>Select an option</p>
-<form action="{% url 'polls:vote' question.id %}" method="post">
-{% csrf_token %}
-{% for choice in question.choice_set.all %}
-    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
-{% endfor %}
-<input type="submit" value="VOTE">
-</form>
-
-<a class="button" href="/polls">&larr; Back to <strong>ACTIVE POLLS</strong></a>
-
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        <p>Select an option</p>
+        <form action="{% url 'polls:vote' question.id %}" method="post">
+        {% csrf_token %}
+        {% for choice in question.choice_set.all %}
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+        {% endfor %}
+        <br>
+        <input type="submit" value="Submit vote">
+        </form>
+        <br>
+        <a class="button" href="/polls">&larr; Back to <strong>ACTIVE POLLS</strong></a>
+    </body>
+</html>
